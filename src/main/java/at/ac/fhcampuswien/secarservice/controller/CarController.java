@@ -1,12 +1,12 @@
 package at.ac.fhcampuswien.secarservice.controller;
 
 import at.ac.fhcampuswien.secarservice.dto.CarResponseDto;
+import at.ac.fhcampuswien.secarservice.model.Car;
 import at.ac.fhcampuswien.secarservice.service.CarService;
+import at.ac.fhcampuswien.secarservice.dto.CarAvailabilityDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,6 +23,13 @@ public class CarController {
     @GetMapping
     public ResponseEntity<?> getCars() {
         List<CarResponseDto> availableCars = carService.findAllAvailableCars();
+        return ResponseEntity.status(HttpStatus.OK).body(availableCars);
+    }
+
+    @PostMapping
+    public ResponseEntity<?> findAvailableCars(@RequestBody CarAvailabilityDto carAvailabilityDto) {
+        List<Car> availableCars = carService.findAvailableCars(carAvailabilityDto.getPickupDate(), carAvailabilityDto.getReturnDate());
+
         return ResponseEntity.status(HttpStatus.OK).body(availableCars);
     }
 }

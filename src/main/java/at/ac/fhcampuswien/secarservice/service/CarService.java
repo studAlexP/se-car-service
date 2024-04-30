@@ -6,6 +6,7 @@ import at.ac.fhcampuswien.secarservice.repository.CarRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,5 +36,9 @@ public class CarService {
                 car.getNumberOfSeats(),
                 car.getPrice()
         );
+    }
+
+    public List<Car> findAvailableCars(LocalDate pickupDate, LocalDate returnDate) {
+        return carRepository.findAvailableCars(pickupDate, returnDate);
     }
 }

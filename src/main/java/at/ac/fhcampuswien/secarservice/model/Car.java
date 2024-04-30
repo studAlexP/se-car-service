@@ -12,10 +12,10 @@ public class Car {
     @Id
     private long id;
 
-    @Field("brandName")
+    //@Field("brandName")
     private String brand;
 
-    @Field("modelName")
+    //@Field("modelName")
     private String model;
 
     private int numberOfSeats;
