@@ -1,13 +1,12 @@
-package at.ac.fhcampuswien.secarservice;
+package com.example;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SeCarServiceApplication {
+public class CarServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SeCarServiceApplication.class, args);
+		SpringApplication.run(CarServiceApplication.class, args);
 	}
-
 }
