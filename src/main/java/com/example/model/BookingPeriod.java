@@ -1,16 +1,15 @@
-package at.ac.fhcampuswien.secarservice.dto;
+package com.example.model;
 
 import java.time.LocalDate;
 
-public class CarAvailabilityDto {
+public class BookingPeriod {
 
     private LocalDate pickupDate;
     private LocalDate returnDate;
 
-    public CarAvailabilityDto() {
-    }
+    public BookingPeriod() {}
 
-    public CarAvailabilityDto(LocalDate pickupDate, LocalDate returnDate) {
+    public BookingPeriod(LocalDate pickupDate, LocalDate returnDate) {
         this.pickupDate = pickupDate;
         this.returnDate = returnDate;
     }
