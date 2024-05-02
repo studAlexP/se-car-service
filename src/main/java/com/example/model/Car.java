@@ -1,41 +1,45 @@
-package at.ac.fhcampuswien.secarservice.model;
+package com.example.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Document("cars")
 public class Car {
 
     @Id
-    private long id;
+    private String id;
 
-    //@Field("brandName")
+    @Field("brandName")
     private String brand;
 
-    //@Field("modelName")
+    @Field("modelName")
     private String model;
 
     private int numberOfSeats;
 
     private BigDecimal price;
 
+    private List<BookingPeriod> bookings;
+
     public Car() {}
 
-    public Car(String brand, String model, int numberOfSeats, BigDecimal price) {
+    public Car(String brand, String model, int numberOfSeats, BigDecimal price, List<BookingPeriod> bookings) {
         this.brand = brand;
         this.model = model;
         this.numberOfSeats = numberOfSeats;
         this.price = price;
+        this.bookings = bookings;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -69,5 +73,13 @@ public class Car {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public List<BookingPeriod> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<BookingPeriod> bookings) {
+        this.bookings = bookings;
     }
 }
