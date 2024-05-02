@@ -1,4 +1,4 @@
-package at.ac.fhcampuswien.secarservice.dto;
+package com.example.dto;
 
 import java.time.LocalDate;
 
