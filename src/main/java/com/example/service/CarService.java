@@ -1,12 +1,12 @@
-package at.ac.fhcampuswien.secarservice.service;
+package com.example.service;
 
-import at.ac.fhcampuswien.secarservice.dto.CarResponseDto;
-import at.ac.fhcampuswien.secarservice.model.Car;
-import at.ac.fhcampuswien.secarservice.repository.CarRepository;
+import com.example.dto.CarRequestDto;
+import com.example.dto.CarResponseDto;
+import com.example.model.Car;
+import com.example.repository.CarRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,8 +20,8 @@ public class CarService {
     }
 
     @Transactional(readOnly = true)
-    public List<CarResponseDto> findAllAvailableCars() {
-        List<Car> availableCars = carRepository.findAll();
+    public List<CarResponseDto> findAllAvailableCars(CarRequestDto carRequestDto) {
+        List<Car> availableCars = carRepository.findAvailableCars(carRequestDto.getPickupDate(), carRequestDto.getReturnDate());
 
         return availableCars.stream()
                 .map(this::mapCarToCarResponseDto)
@@ -36,9 +36,5 @@ public class CarService {
                 car.getNumberOfSeats(),
                 car.getPrice()
         );
-    }
-
-    public List<Car> findAvailableCars(LocalDate pickupDate, LocalDate returnDate) {
-        return carRepository.findAvailableCars(pickupDate, returnDate);
     }
 }
