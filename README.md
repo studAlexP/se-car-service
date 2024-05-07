@@ -6,7 +6,6 @@ The SE Car Service is a Spring Boot application designed to handle car requests.
 ## Key Features
 - **MongoDB Integration:** Utilizes MongoDB for storing and retrieving user data.
 - **Kafka Integration:** Utilizes Kafka for message streaming between this car service and the booking service.
-- **Exception Handling:** Custom exception handling for scenarios like "Email Already in Use."
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
