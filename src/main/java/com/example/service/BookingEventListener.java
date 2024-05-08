@@ -27,8 +27,8 @@ public class BookingEventListener {
         updateCarAvailability(bookingRequestDto.getCardId(), bookingPeriod);
     }
 
-    private void updateCarAvailability(long carId, BookingPeriod bookingPeriod) {
-        Optional<Car> carById = carRepository.findById(String.valueOf(carId));
+    private void updateCarAvailability(String carId, BookingPeriod bookingPeriod) {
+        Optional<Car> carById = carRepository.findById(carId);
         if (carById.isPresent()) {
             Car car = carById.get();
             List<BookingPeriod> bookings = car.getBookings();
