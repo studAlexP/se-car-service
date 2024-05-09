@@ -29,31 +29,11 @@ public class CarController {
         if (toCurrency == null) {
             availableCars = carService.getAvailableCars(pickupDate, returnDate);
         } else {
-            availableCars = null;
+            availableCars = carService.getAvailableCars(pickupDate, returnDate, toCurrency);
         }
 
         return ResponseEntity.status(HttpStatus.OK).body(availableCars);
     }
-/*
-    @PostMapping("/updatePrice")
-    public ResponseEntity<?> updatePriceOfAvailableCars(@RequestBody CarRequestDto carRequestDto, @RequestParam String currency) {
-        List<CarResponseDto> availableCars = carService.findAllAvailableCars(carRequestDto);
-        for (CarResponseDto car : availableCars) {
-            System.out.println("update PRice");
-
-            CurrencyConverterClient currencyConverter = new CurrencyConverterClient("localhost", 5120);
-
-            double convertedPrice = currencyConverter.convertCurrency(carRequestDto.getCarPrice(), "USD", currency);
-            car.setPrices((float) convertedPrice);
-
-
-
-        }
-        return ResponseEntity.status(HttpStatus.OK).body(availableCars);
-    }
-    */
-
-
 
     @GetMapping("/{carId}")
     public ResponseEntity<CarResponseDto> getCarById(@PathVariable("carId") String carId) {
