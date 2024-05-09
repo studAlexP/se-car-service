@@ -1,16 +1,12 @@
 package com.example.controller;
-/*
-import com.example.currencyConverter.CurrencyConverterClient;
 
-
- */
-import com.example.dto.CarRequestDto;
 import com.example.dto.CarResponseDto;
 import com.example.service.CarService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -23,9 +19,19 @@ public class CarController {
         this.carService = carService;
     }
 
-    @PostMapping
-    public ResponseEntity<List<CarResponseDto>> getCars(@RequestBody CarRequestDto carRequestDto) {
-        List<CarResponseDto> availableCars = carService.findAllAvailableCars(carRequestDto);
+    @GetMapping
+    public ResponseEntity<List<CarResponseDto>> getAvailableCars(
+            @RequestParam LocalDate pickupDate,
+            @RequestParam LocalDate returnDate,
+            @RequestParam(required = false) String toCurrency
+    ) {
+        List<CarResponseDto> availableCars;
+        if (toCurrency == null) {
+            availableCars = carService.getAvailableCars(pickupDate, returnDate);
+        } else {
+            availableCars = null;
+        }
+
         return ResponseEntity.status(HttpStatus.OK).body(availableCars);
     }
 /*
@@ -48,4 +54,9 @@ public class CarController {
     */
 
 
+
+    @GetMapping("/{carId}")
+    public ResponseEntity<CarResponseDto> getCarById(@PathVariable("carId") String carId) {
+       return ResponseEntity.status(HttpStatus.OK).body(carService.getCarById(carId));
+    }
 }
