@@ -5,17 +5,17 @@ import java.math.BigDecimal;
 public class CarResponseDto {
 
     private String id;
-    private String brand;
-    private String model;
+    private String brandName;
+    private String modelName;
     private int numberOfSeats;
     private BigDecimal price;
 
     public CarResponseDto() {}
 
-    public CarResponseDto(String id, String brand, String model, int numberOfSeats, BigDecimal price) {
+    public CarResponseDto(String id, String brandName, String modelName, int numberOfSeats, BigDecimal price) {
         this.id = id;
-        this.brand = brand;
-        this.model = model;
+        this.brandName = brandName;
+        this.modelName = modelName;
         this.numberOfSeats = numberOfSeats;
         this.price = price;
     }
@@ -24,12 +24,12 @@ public class CarResponseDto {
         return id;
     }
 
-    public String getBrand() {
-        return brand;
+    public String getBrandName() {
+        return brandName;
     }
 
-    public String getModel() {
-        return model;
+    public String getModelName() {
+        return modelName;
     }
 
     public int getNumberOfSeats() {
