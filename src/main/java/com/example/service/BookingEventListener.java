@@ -24,7 +24,7 @@ public class BookingEventListener {
         BookingPeriod bookingPeriod = new BookingPeriod();
         bookingPeriod.setPickupDate(bookingRequestDto.getPickupDate());
         bookingPeriod.setReturnDate(bookingRequestDto.getReturnDate());
-        updateCarAvailability(bookingRequestDto.getCardId(), bookingPeriod);
+        updateCarAvailability(bookingRequestDto.getCarId(), bookingPeriod);
     }
 
     private void updateCarAvailability(String carId, BookingPeriod bookingPeriod) {
