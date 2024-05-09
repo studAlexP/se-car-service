@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface CarRepository extends MongoRepository<Car, String> {
-    @Query("{ 'bookings': { $not: { $elemMatch: { pickupDate: { $lt: ?1 }, returnDate: { $gt: ?0 } } } } }")
+    @Query("{ 'bookings': { $not: { $elemMatch: { $and: [ { 'pickupDate': { $lte: ?1 } }, { 'returnDate': { $gte: ?1 } } ] } } }}")
     List<Car> findAvailableCars(LocalDate pickupDate, LocalDate returnDate);
 }
